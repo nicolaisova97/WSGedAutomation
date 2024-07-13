@@ -5,7 +5,7 @@ class MetaclassPage
     constructor(page)
     {
         this.page = page;
-        this.creerUnMetaclassButton = page.locator("//span[contains(text(), \"Créer un metaclass\")]"); 
+        this.creerUnMetaclassButton = page.locator("//a[@id='newMetaclassBtn']//span[text()='Créer un metaclass']");
         this.nouveauMetaclassModalTitle = page.locator('.modal-title-main');
     }
 

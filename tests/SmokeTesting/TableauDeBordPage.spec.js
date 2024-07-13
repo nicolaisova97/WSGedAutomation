@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { POManager } = require('../../pageobjects/POManager');
 
-let poManager, loginPage, tableauDeBordPage, searchPage, helpPage, notificationPage;
+let poManager, loginPage, tableauDeBordPage, searchPage, helpPage, notificationPage, monComptePage;
 
 test.beforeEach(async ({ page }) => {
     poManager = new POManager(page);
@@ -10,6 +10,7 @@ test.beforeEach(async ({ page }) => {
     searchPage = poManager.getSearchPage();
     helpPage = poManager.getHelpPage();
     notificationPage = poManager.getNotificationPage();
+    monComptePage = poManager.getMonComptePage();
 });
 
 async function login() {
@@ -62,7 +63,7 @@ test('@Smoke: Open Aide En Ligne', async ({ page }) => {
     await helpPage.clickOnAideEnLigneButton();
 });
 
-test('@Smoke4: Verify Infos Pratiques ', async ({ page }) => {
+test('@Smoke: Verify Infos Pratiques ', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnNotificationButton();
@@ -72,46 +73,95 @@ test('@Smoke4: Verify Infos Pratiques ', async ({ page }) => {
     await notificationPage.verifyIfInfosPratiquesModalIsDisplayed();
 });
 
-test('@Smoke4: Verify Validation Detape De Workflow', async ({ page }) => {
+test('@Smoke: Verify Validation Detape De Workflow', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnValidationDetapeDeWorkflowButton();
     await notificationPage.verifyPageLink('/page/workflows/processes/pending');
 });
 
-test('@Smoke4: Verify Bulletins De Paie En AttenteDenvoi', async ({ page }) => {
+test('@Smoke: Verify Bulletins De Paie En AttenteDenvoi', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnBulletinsDePaieEnAttenteDenvoiButton();
     await notificationPage.verifyPageLink('/page/digiposte/sendingBox');
 });
 
-test('@Smoke4: Verify Decoupes En Attente', async ({ page }) => {
+test('@Smoke2: Verify Decoupes En Attente', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnDecoupesEnAttenteButton();
     await notificationPage.verifyPageLink('/page/autocut/queue');
 });
 
-test('@Smoke4: Verify Rapports Dabonements Non Lus', async ({ page }) => {
+test('@Smoke: Verify Rapports Dabonements Non Lus', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnRapportsDabonementsNonLusButton();
     await notificationPage.verifyPageLink('/index.php?do=fsListReportsBySubscription');
 });
 
-test('@Smoke4: Verify Doublons Detectes', async ({ page }) => {
+test('@Smoke: Verify Doublons Detectes', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnDoublonsDetectesButton();
     await notificationPage.verifyPageLink('/page/duplicate/list');
 });
 
-test('@Smoke4: Verify Alarmes Depassees', async ({ page }) => {
+test('@Smoke: Verify Alarmes Depassees', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnAlarmesDepasseesButton();
     await notificationPage.verifyAlarmesDepasseesModalIsDisplayed();
 });
+
+test('@Smoke: Verify INformations personnelles Page', async ({ page }) => {
+    await login();
+    await monComptePage.clickOnMyProfileLogo();
+    await monComptePage.clickOnMonCompteButton();
+    await monComptePage.verifyPageLink('/general');
+});
+
+test('@Smoke: Verify Carnet Dadresses Page', async ({ page }) => {
+    await login();
+    await monComptePage.clickOnMyProfileLogo();
+    await monComptePage.clickOnMonCompteButton();
+    await monComptePage.clickOnCarnetDadressesButton();
+    await monComptePage.verifyPageLink('/contacts');
+});
+
+test('@Smoke: Verify Gestion des paraphes Page', async ({ page }) => {
+    await login();
+    await monComptePage.clickOnMyProfileLogo();
+    await monComptePage.clickOnMonCompteButton();
+    await monComptePage.clickOnGestionDesParaphesButton();
+    await monComptePage.verifyPageLink('/paraphManager');
+});
+
+test('@Smoke: Verify Parametres Page', async ({ page }) => {
+    await login();
+    await monComptePage.clickOnMyProfileLogo();
+    await monComptePage.clickOnMonCompteButton();
+    await monComptePage.clickOnParametresButton();
+    await monComptePage.verifyPageLink('/settings');
+});
+
+test('@Smoke: Verify Connexions externes Page', async ({ page }) => {
+    await login();
+    await monComptePage.clickOnMyProfileLogo();
+    await monComptePage.clickOnMonCompteButton();
+    await monComptePage.clickOnConnectionsExternesButton();
+    await monComptePage.verifyPageLink('/connections');
+});
+
+test('@Smoke: Verify Autres informations Page', async ({ page }) => {
+    await login();
+    await monComptePage.clickOnMyProfileLogo();
+    await monComptePage.clickOnMonCompteButton();
+    await monComptePage.clickOnAutresInformationsButton();
+    await monComptePage.verifyPageLink('/info');
+});
+
+
 
 

@@ -120,13 +120,13 @@ test('@Smoke: Verify Ged Nouveau Formulaire Page', async({page}) => {
     await gedFormsPage.verifyGedNouveauFormulairePageLink();
 });
 
-test('@Smoke1: Verify Gestion des Doublons Page', async({page}) => {
+test('@Smoke: Verify Gestion des Doublons Page', async({page}) => {
     await administrationNavigation();
     await homePage.clickOnGestionDesDoublons();
     await gestionDesDoublonsPage.verifyGestionDesDoublonsPageLink();
 });
 
-test('@Smoke1: Verify Gestion des Doublons Nouvelle Configuration Modal', async({page}) => {
+test('@Smoke: Verify Gestion des Doublons Nouvelle Configuration Modal', async({page}) => {
     await administrationNavigation();
     await homePage.clickOnGestionDesDoublons();
     await gestionDesDoublonsPage.clickOnConfigurerLaMetadonnee();

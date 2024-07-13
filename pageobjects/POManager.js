@@ -45,6 +45,7 @@ const {NouveauWorkflowPage} = require('./plus/administration/workflow/NouveauWor
 const {SearchPage} = require('./SearchPage');
 const {HelpPage} = require('./HelpPage');
 const {NotificationPage} = require('./NotificationPage');
+const {MonComptePage} = require('./MonComptePage');
 
 class POManager
 {
@@ -99,6 +100,7 @@ class POManager
         this.searchPage = new SearchPage(this.page);
         this.helpPage = new HelpPage(this.page);
         this.notificationPage = new NotificationPage(this.page);
+        this.monComptePage = new MonComptePage(this.page);
     }
 
     getLoginPage()
@@ -329,6 +331,11 @@ class POManager
     getNotificationPage()
     {
         return this.notificationPage;
+    }
+
+    getMonComptePage()
+    {
+        return this.monComptePage;
     }
 }
 module.exports = {POManager};

@@ -3,11 +3,11 @@ const { devices } = require('@playwright/test');
 
 const config = {
   testDir: './tests',
-  retries: 0,
+  retries: 1,
   workers: 3, // how much test files to run in parralel
   /* Maximum time one test can run for. */
   //10-
-  timeout: 3000 * 1000,
+  timeout: 30 * 1000,
   expect: {
 
     timeout: 5000

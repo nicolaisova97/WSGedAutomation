@@ -87,7 +87,7 @@ test('@Smoke: Verify Bulletins De Paie En AttenteDenvoi', async ({ page }) => {
     await notificationPage.verifyPageLink('/page/digiposte/sendingBox');
 });
 
-test('@Smoke2: Verify Decoupes En Attente', async ({ page }) => {
+test('@Smoke: Verify Decoupes En Attente', async ({ page }) => {
     await login();
     await notificationPage.clickOnNotificationButton();
     await notificationPage.clickOnDecoupesEnAttenteButton();
